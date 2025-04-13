@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disease Diagnosis Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e6f0ff, #f2f9ff);
+      color: #333;
+    }
+
+    header {
+      background-color: #0077b6;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      text-align: center; /* Center the button inside the form */
+    }
+
+    .form-container h3 {
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-container input,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .form-container button {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #005f86;
+    }
+
+    /* New Style for Row Layout */
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+      min-width: 250px; /* Ensures inputs don't shrink too small */
+    }
+
+    footer {
+      text-align: center; /* Center the footer */
+      padding: 20px;
+      background-color: #caf0f8;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Disease Diagnosis System</h1>
+    <p>Empowering Healthcare with Data-Driven Intelligence</p>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h3>Enter Patient Details</h3>
+      <form action="/submit_diagnosis" method="POST">
+
+        <div class="form-row">
+          <!-- Gender (Categorical) -->
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="Gender" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Blood Pressure (Systolic) -->
+          <div class="form-group">
+            <label for="blood_pressure_systolic">Blood Pressure (Systolic):</label>
+            <input type="number" id="blood_pressure_systolic" name="Blood_Pressure_systolic" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Blood Pressure (Diastolic) -->
+          <div class="form-group">
+            <label for="blood_pressure_diastolic">Blood Pressure (Diastolic):</label>
+            <input type="number" id="blood_pressure_diastolic" name="Blood_Pressure_diastolic" required />
+          </div>
+
+          <!-- Heart Rate -->
+          <div class="form-group">
+            <label for="heart_rate">Heart Rate:</label>
+            <input type="number" id="heart_rate" name="Heart_Rate" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Respiratory Rate -->
+          <div class="form-group">
+            <label for="respiratory_rate">Respiratory Rate:</label>
+            <input type="number" id="respiratory_rate" name="Respiratory_Rate" required />
+          </div>
+
+          <!-- Temperature -->
+          <div class="form-group">
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="0.1" id="temperature" name="Temperature_Celsius" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Glucose Level -->
+          <div class="form-group">
+            <label for="glucose_level">Glucose Level:</label>
+            <input type="number" id="glucose_level" name="Glucose_Level" required />
+          </div>
+
+          <!-- Cholesterol Level -->
+          <div class="form-group">
+            <label for="cholesterol_level">Cholesterol Level:</label>
+            <input type="number" id="cholesterol_level" name="Cholesterol_Level" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Diagnosis Code -->
+          <div class="form-group">
+            <label for="diagnosis_code">Diagnosis Code:</label>
+            <input type="text" id="diagnosis_code" name="Diagnosis_Code" required />
+          </div>
+
+          <!-- Age -->
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="Age" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Oxygen Saturation -->
+          <div class="form-group">
+            <label for="oxygen_saturation">Oxygen Saturation (%):</label>
+            <input type="number" id="oxygen_saturation" name="Oxygen_Saturation" required />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit Diagnosis</button>
+      </form>
+    </form>
+  </div>
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Disease Diagnosis AI | Built with ❤️ by Abhishek Upadhyay & Team
+  </footer>
+
+</body>
+</html>
