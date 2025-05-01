@@ -13,20 +13,24 @@ def index():
 
 @app.route('/predict',methods=['GET','POST'])
 def prediction():
-    if request.method=='POST':
+    if request.method=='GET':
+        return render_template('form.html')
+    
+    else:
         data=CustomData(
-            Gender=(request.form.get('Gender')),
-            Blood_Pressure_systolic=int(request.form.get('Blood_Pressure_systolic')),
-            Blood_Pressure_diastolic=int(request.form.get('Blood_Pressure_diastolic')),
-            Heart_Rate=int(request.form.get('Heart_Rate')),
-            Respiratory_Rate=int(request.form.get('Respiratory_Rate')),
-            Temperature_Celsius=float(request.form.get('Temperature_Celsius')),
-            Glucose_Level=float(request.form.get('Glucose_Level')),
-            Cholesterol_Level=int(request.form.get('Cholesterol_Level')),
-            Diagnosis_Code=float(request.form.get('Diagnosis_Code')),
-            Age=int(request.form.get('Age')),
-            Oxygen_Saturation=int(request.form.get('Oxygen_Saturation'))
+            Gender=(request.form.get('gender')),
+            Blood_Pressure_systolic=float(request.form.get('blood_Pressure_systolic')),
+            Blood_Pressure_diastolic=float(request.form.get("blood_Pressure_diastolic")),
+            Heart_Rate=float(request.form.get('heart_Rate')),
+            Respiratory_Rate=float(request.form.get('respiratory_Rate')),
+            Temperature_Celsius=float(request.form.get('temperature_Celsius')),
+            Glucose_Level=float(request.form.get('glucose_Level')),
+            Cholesterol_Level=float(request.form.get('cholesterol_Level')),
+            Diagnosis_Code=float(request.form.get('diagnosis_Code')),
+            Age=float(request.form.get('age')),
+            Oxygen_Saturation=float(request.form.get('oxygen_Saturation'))
         )
+
         logging.info(data)
         final_new_data=data.get_data_as_daraframe()
         
@@ -36,11 +40,8 @@ def prediction():
         result= predict_pipeline.predict(final_new_data)
         
         logging.info(f'prediction is Done {result}')
-        return render_template('result.html',predicted_disease=result)
-        # return render_template('form.html')
+        return render_template('form.html',predicted_disease=result)
     
-    else:
-        return render_template('index.html')
-        # return render_template('form.html')
+    
 if __name__=='__main__':
     app.run(debug=True,host='0.0.0.0')

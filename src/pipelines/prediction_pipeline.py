@@ -34,28 +34,28 @@ class PredictionPipeline:
 class CustomData:
     def __init__(self,
             Gender:str,
-            Blood_Pressure_systolic:int,
-            Blood_Pressure_diastolic:int,
-            Heart_Rate:int,
-            Respiratory_Rate:int,
+            Blood_Pressure_systolic:float,
+            Blood_Pressure_diastolic:float,
+            Heart_Rate:float,
+            Respiratory_Rate:float,
             Temperature_Celsius:float,
             Glucose_Level:float,
-            Cholesterol_Level:int,
+            Cholesterol_Level:float,
             Diagnosis_Code:float,
-            Age:int,
-            Oxygen_Saturation:int
+            Age:float,
+            Oxygen_Saturation:float
             ):
-        self.Gender,
-        self.Blood_Pressure_systolic,
-        self.Blood_Pressure_diastolic,
-        self.Heart_Rate,
-        self.Respiratory_Rate,
-        self.Temperature_Celsius,
-        self.Glucose_Level,
-        self.Cholesterol_Level,
-        self.Diagnosis_Code,
-        self.Age,
-        self.Oxygen_Saturation
+        self.Gender=Gender
+        self.Blood_Pressure_systolic=Blood_Pressure_systolic
+        self.Blood_Pressure_diastolic=Blood_Pressure_diastolic
+        self.Heart_Rate=Heart_Rate
+        self.Respiratory_Rate=Respiratory_Rate
+        self.Temperature_Celsius=Temperature_Celsius
+        self.Glucose_Level=Glucose_Level
+        self.Cholesterol_Level=Cholesterol_Level
+        self.Diagnosis_Code=Diagnosis_Code
+        self.Age=Age
+        self.Oxygen_Saturation=Oxygen_Saturation
         
     
     
@@ -74,8 +74,6 @@ class CustomData:
                 "Diagnosis_Code":[self.Diagnosis_Code],
                 "Age":[self.Age],
                 "Oxygen_Saturation":[self.Oxygen_Saturation]
-                
-                
                 
             }
             

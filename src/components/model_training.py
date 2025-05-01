@@ -14,8 +14,8 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier,
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
-from catboost import CatBoostClassifier
+# from lightgbm import LGBMClassifier
+# from catboost import CatBoostClassifier
 from sklearn.metrics import accuracy_score
 
 
@@ -40,16 +40,16 @@ class ModelTrainer:
         
             models = {
     "Logistic Regression": LogisticRegression(),
-    # "K-Nearest Neighbors": KNeighborsClassifier(),
-    # "Decision Tree": DecisionTreeClassifier(),
-    # "Random Forest": RandomForestClassifier(),
-    # "Support Vector Classifier": SVC(),
-    # "Naive Bayes (Gaussian)": GaussianNB(),
-    # "Naive Bayes (Multinomial)": MultinomialNB(),
-    # "Gradient Boosting": GradientBoostingClassifier(),
-    # "AdaBoost": AdaBoostClassifier(),
-    # "Bagging Classifier": BaggingClassifier(),
-    # "XGBoost Classifier": XGBClassifier(use_label_encoder=False, eval_metric='logloss'),
+    "K-Nearest Neighbors": KNeighborsClassifier(),
+    "Decision Tree": DecisionTreeClassifier(),
+    "Random Forest": RandomForestClassifier(),
+    "Support Vector Classifier": SVC(),
+    "Naive Bayes (Gaussian)": GaussianNB(),
+    "Naive Bayes (Multinomial)": MultinomialNB(),
+    "Gradient Boosting": GradientBoostingClassifier(),
+    "AdaBoost": AdaBoostClassifier(),
+    "Bagging Classifier": BaggingClassifier(),
+    "XGBoost Classifier": XGBClassifier(use_label_encoder=False, eval_metric='logloss'),
     # "LightGBM Classifier": LGBMClassifier(),
     # "CatBoost Classifier": CatBoostClassifier(verbose=0)
 }

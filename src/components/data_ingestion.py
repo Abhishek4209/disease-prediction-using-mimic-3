@@ -6,7 +6,7 @@ from src.exception import CustomException
 from dataclasses import dataclass
 from sklearn.model_selection import train_test_split
 
-## Data ingestion COnfig:
+## Data ingestion Config:
 @dataclass
 class DataIngestionConfig:
     train_data_path=os.path.join('artifacts','train.csv')

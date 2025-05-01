@@ -8,21 +8,28 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #e6f0ff, #f2f9ff);
-      color: #333;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eee;
     }
 
     header {
-      background-color: #0077b6;
+      background-color: #0f4c75;
       padding: 20px;
       text-align: center;
-      color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
     header h1 {
       margin: 0;
       font-size: 2.5rem;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.1rem;
+      color: #ddd;
     }
 
     main {
@@ -32,51 +39,59 @@
     }
 
     .form-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-      text-align: center; /* Center the button inside the form */
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      margin-top: 30px;
+      text-align: center;
+      color: #fff;
     }
 
     .form-container h3 {
-      color: #0077b6;
-      margin-bottom: 20px;
+      color: #00f5d4;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 4px #000;
     }
 
     .form-container label {
       display: block;
       margin-bottom: 10px;
       font-weight: bold;
+      color: #eee;
     }
 
     .form-container input,
     .form-container select {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0 20px 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      border: none;
+      border-radius: 10px;
+      background-color: #2e2e3a;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.6);
     }
 
     .form-container button {
-      padding: 12px 24px;
+      padding: 14px 28px;
       font-size: 1.2rem;
-      background-color: #0077b6;
-      color: white;
+      background-color: #00f5d4;
+      color: #222;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
     }
 
     .form-container button:hover {
-      background-color: #005f86;
+      background-color: #00cba9;
+      transform: scale(1.05);
     }
 
-    /* New Style for Row Layout */
     .form-row {
       display: flex;
       flex-wrap: wrap;
@@ -85,15 +100,40 @@
 
     .form-row .form-group {
       flex: 1;
-      min-width: 250px; /* Ensures inputs don't shrink too small */
+      min-width: 250px;
     }
 
     footer {
-      text-align: center; /* Center the footer */
+      text-align: center;
       padding: 20px;
-      background-color: #caf0f8;
-      color: #555;
+      background-color: #0f4c75;
+      color: #ccc;
       font-size: 0.9rem;
+      margin-top: 50px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.4);
+    }
+
+    /* Disease result block */
+    #disease-result {
+      margin-top: 40px;
+      background: linear-gradient(135deg, #6a3093, #a044ff);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    #disease-result h3 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    #disease-result p {
+      font-size: 1.6rem;
+      color: #00ffb3;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #000;
     }
 
   </style>
@@ -108,97 +148,90 @@
   <main>
     <div class="form-container">
       <h3>Enter Patient Details</h3>
-      <form action="/submit_diagnosis" method="POST">
+      <form action="/predict" method="POST">
 
         <div class="form-row">
-          <!-- Gender (Categorical) -->
           <div class="form-group">
             <label for="gender">Gender:</label>
-            <select id="gender" name="Gender" required>
+            <select id="gender" name="gender" required>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
           </div>
 
-          <!-- Blood Pressure (Systolic) -->
           <div class="form-group">
             <label for="blood_pressure_systolic">Blood Pressure (Systolic):</label>
-            <input type="number" id="blood_pressure_systolic" name="Blood_Pressure_systolic" required />
+            <input type="number" id="blood_pressure_systolic" name="blood_Pressure_systolic" required />
+            
           </div>
         </div>
 
         <div class="form-row">
-          <!-- Blood Pressure (Diastolic) -->
           <div class="form-group">
             <label for="blood_pressure_diastolic">Blood Pressure (Diastolic):</label>
-            <input type="number" id="blood_pressure_diastolic" name="Blood_Pressure_diastolic" required />
+            <input type="number" id="blood_pressure_diastolic" name="blood_Pressure_diastolic" required />
           </div>
 
-          <!-- Heart Rate -->
           <div class="form-group">
             <label for="heart_rate">Heart Rate:</label>
-            <input type="number" id="heart_rate" name="Heart_Rate" required />
+            <input type="number" id="heart_rate" name="heart_Rate" required />
           </div>
         </div>
 
         <div class="form-row">
-          <!-- Respiratory Rate -->
           <div class="form-group">
             <label for="respiratory_rate">Respiratory Rate:</label>
-            <input type="number" id="respiratory_rate" name="Respiratory_Rate" required />
+            <input type="number" id="respiratory_rate" name="respiratory_Rate" required />
           </div>
 
-          <!-- Temperature -->
           <div class="form-group">
             <label for="temperature">Temperature (°C):</label>
-            <input type="number" step="0.1" id="temperature" name="Temperature_Celsius" required />
+            <input type="number" step="0.1" id="temperature" name="temperature_Celsius" required />
           </div>
         </div>
 
         <div class="form-row">
-          <!-- Glucose Level -->
           <div class="form-group">
             <label for="glucose_level">Glucose Level:</label>
-            <input type="number" id="glucose_level" name="Glucose_Level" required />
+            <input type="number" id="glucose_level" name="glucose_Level" required />
           </div>
 
-          <!-- Cholesterol Level -->
           <div class="form-group">
             <label for="cholesterol_level">Cholesterol Level:</label>
-            <input type="number" id="cholesterol_level" name="Cholesterol_Level" required />
+            <input type="number" id="cholesterol_level" name="cholesterol_Level" required />
           </div>
         </div>
 
         <div class="form-row">
-          <!-- Diagnosis Code -->
           <div class="form-group">
             <label for="diagnosis_code">Diagnosis Code:</label>
-            <input type="text" id="diagnosis_code" name="Diagnosis_Code" required />
+            <input type="text" id="diagnosis_code" name="diagnosis_Code" required />
           </div>
 
-          <!-- Age -->
           <div class="form-group">
             <label for="age">Age:</label>
-            <input type="number" id="age" name="Age" required />
+            <input type="number" id="age" name="age" required />
           </div>
         </div>
 
         <div class="form-row">
-          <!-- Oxygen Saturation -->
           <div class="form-group">
             <label for="oxygen_saturation">Oxygen Saturation (%):</label>
-            <input type="number" id="oxygen_saturation" name="Oxygen_Saturation" required />
+            <input type="number" id="oxygen_saturation" name="oxygen_Saturation" required />
           </div>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit">Submit Diagnosis</button>
       </form>
-    </form>
-  </div>
-
     </div>
+
+    <!-- Disease Result Block -->
+    <div id="disease-result" class="form-container">
+      <h3>Predicted Disease</h3>
+      <p>{{ predicted_disease }}</p>
+    </div>
+
   </main>
 
   <footer>
