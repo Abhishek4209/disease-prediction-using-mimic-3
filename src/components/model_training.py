@@ -14,8 +14,6 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier,
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from xgboost import XGBClassifier
-# from lightgbm import LGBMClassifier
-# from catboost import CatBoostClassifier
 from sklearn.metrics import accuracy_score
 
 
@@ -50,8 +48,6 @@ class ModelTrainer:
     "AdaBoost": AdaBoostClassifier(),
     "Bagging Classifier": BaggingClassifier(),
     "XGBoost Classifier": XGBClassifier(use_label_encoder=False, eval_metric='logloss'),
-    # "LightGBM Classifier": LGBMClassifier(),
-    # "CatBoost Classifier": CatBoostClassifier(verbose=0)
 }
 
         

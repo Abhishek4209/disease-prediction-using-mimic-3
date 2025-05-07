@@ -6,8 +6,6 @@ from src.logger import logging
 from src.exception import CustomException
 from src.utils import load_object
 
-
-
 class PredictionPipeline:
     def __init__(self):
         pass
